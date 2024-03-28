@@ -1,6 +1,7 @@
 import ply.lex as lex
 import ply.yacc as yacc
 from urllib.request import Request, urlopen
+import numpy as np
 
 countryData, entireData, dict_data=[],[],{}
 
@@ -108,13 +109,13 @@ def p_table(p):
     '''table : BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow'''
            
 def p_skiprows(p):
-    '''skiprows : skiprow skiprow skiprow skiprow skiprow skiprow skiprow skiprow'''
-    print("skiprows completed")
+    '''skiprows : skiprow skiprow skiprow skiprow skiprow skiprow skiprow'''
+    #print("skiprows completed")
 
 #skip the entire <th> tag
 def p_skiprow(p):
     '''skiprow : OPENROW unwanted CLOSEROW'''
-    print("skip row ")
+    #print("skip row ")
 
 def p_skiptag(p):
     '''skiptag : CONTENT skiptag
@@ -158,10 +159,7 @@ def p_dataCell(p):
     elif len(p)==5: countryData.append(p[2])
     else:
         ind1,ind2 = p[2].find('href="'), p[2].find('">')
-        print(ind1)
-        print(p[2])
         url = p[2][ind1+6:ind2]
-        print(url)
         if url.find('country')!=-1: countryData.append(url)
         countryData.append(p[3])
    
@@ -190,7 +188,6 @@ def parse(data):
     parser = yacc.yacc()
     parser.parse(data)
 
-
 # downloads web page for given url and stores them in given file_name
 def downloadWebPage(url, file_name):
     req = Request(url,headers ={'User-Agent':'Mozilla/5.0'})
@@ -207,33 +204,55 @@ def extractData():
     file_obj.close()
     parse(data)
 
+def extract_4_cases(dict_data):
+    while(True):
+        ip=input("Enter country name(-1 for exit): ")
+        if(ip=="-1"): break
+        data = dict_data[ip.lower()]
+        new, daily,recovered,active = data[4],data[6],data[8],data[9]
+        print(f'Active Cases: {active}\nDaily Deaths: {daily}\nNew Recovered: {recovered}\nNew Cases:{new}')
+
 #########DRIVER FUNCTION#######
 def main():
+    downloadWebPage('https://www.worldometers.info/coronavirus/','webpage.html')
+    print("Extracting")
+    extractData()
+    countries = []
+    country_file = open('worldometers_countrylist.txt','r')
+    file = open('data1.txt','w')
+    arr=['Country Name','Url','Total cases','Active Cases', 'Total Deaths', 'Totat Recovered', 'Total Tests', 'Deaths/million'', Tests/million', 'New Cases', 'New Death', 'New Recovery']
+    ind=[1,2,3,9,5,7,13,12,14,4,6,8]
+    for x in country_file.readlines(): countries.append(x.replace('\n',''))
+    file = open('data1.txt','w')
+    file.write(('\t'.join(arr))+'\n')
+    for i in entireData:
+        i.reverse()
+        for j in range(2,len(i)): 
+            i[j]=i[j].replace(',','').replace(' ','')
+            if i[j]=='': i[j]= '0'
+        if (i[1].lower()=='world'): 
+            dict_data[str(i[1]).lower()]=['','world','']+i[2:]
+            data = ['','world','']+i[2:]
+        else: 
+            dict_data[str(i[1]).lower()]=i[:]
+            data=i[:]
+        if (str(i[1])in countries):
+            val=[]
+            for x in ind:val.append(data[x])
+            string = '\t'.join(val)
+            file.write(string+'\n')
+    file.close()
 
-  downloadWebPage('https://www.worldometers.info/coronavirus/','webpage.html')
-  extractData()
+    file = open('data.txt','w')
+    for i in entireData:
+        string = ','.join(i[0:14])
+        file.write(string+'\n')
+    file.close()
 
-  for i in entireData:
-    i.reverse()
-    for j in range(2,len(i)): 
-        i[j]=i[j].replace(',','').replace(' ','')
-        if i[j]=='': i[j]= '0'
-    dict_data[str(i[1]).lower()]=i[:]
-
-  file = open('data.txt','w')
-  for i in entireData:
-    string = ','.join(i[0:13])
+    file = open('gloabl_countries_data.txt','w')
+    string = '\t'.join(arr)
     file.write(string+'\n')
-
-  file.close()
-
-  while(True):
-    ip=input("country: ")
-    if(ip=="-1"): break
-    data = dict_data[ip.lower()]
-    new, daily,recovered,active = data[4],data[6],data[8],data[9]
-    print(f'Active Cases: {active}\nDaily Deaths: {daily}\nNew Recovered: {recovered}\nNew Cases:{new}')
-    
+    #extract_4_cases(dict_data)
 
 if __name__ == '__main__':
     main()

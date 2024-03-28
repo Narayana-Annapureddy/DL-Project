@@ -14,5 +14,4 @@ for key in value_countrys.keys():
     try:
         print(f'{float(key)}\t{value}')
     except:
-        print(f' except {key}\t{value}')
-#print(value_countrys)
+        print(f'{key}\t{value}')
