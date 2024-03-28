@@ -1,9 +1,14 @@
-all: run
+all: module3.1.2 module3.1.3
 
-split_data:
-	python3 chunker.py
+extract_data:
+	python3 task3.py;
+    
+scrap:
+	python3 task1.py;
 
+module3.1.2:
+	python3 task3_2.py;
 
-run:
+module3.1.3:
 	@start=$$(date +%s%N); \
-    (python3 mapper.py chunks/chunk_1.txt | python3 combiner.py )| sort -n | python3 reducer.py
+    python3 mapper.py worldometers_countrylist.txt | python3 combiner.py | sort -n | python3 reducer.py
