@@ -5,15 +5,13 @@ def extract_4_cases():
         data=line.replace('\n','').split('\t')
         dict_data[data[0].lower()] = data[2:]
 
-    while(True):
-        ip=input("Enter country name(-1 for exit): ")
-        if(ip=="-1"): break
-        if ip.lower() not in dict_data.keys():
-            print("INvalid country name, pls try other name")
-            continue
-        data = dict_data[ip.lower()]
-        active, daily,recovered,new = data[1],data[-2],data[-1],data[-3]
-        print(f'Active Cases: {active}\nDaily Deaths: {daily}\nNew Recovered: {recovered}\nNew Cases:{new}')
+    ip=input("Enter country name: ")
+    if ip.lower() not in dict_data.keys(): 
+        print("Invalid country name")
+        return
+    data = dict_data[ip.lower()]
+    active, daily,recovered,new = data[1],data[-2],data[-1],data[-3]
+    print(f'Active Cases: {active}\nDaily Deaths: {daily}\nNew Recovered: {recovered}\nNew Cases:{new}')
 
 def print_all_countries_data():
     data = open('data/data1.txt','r').readlines()
