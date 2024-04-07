@@ -1,5 +1,19 @@
-I have done Module1, Module 3.1
+I have done 
 Remaining modules are done by my teammates Narayana, Akash.
+
+
+
+Vamsi (23CS60R66) : Module1, Module 3.1 
+
+Narayana (23CS60R40) : Module 3.2, Main menu driven program
+
+Akash (23CS60R14) : Module 2
+
+
+
+
+
+
 
 # task1.py
 In this file we are extracting the world covid data information and storing this info in data1.txt
