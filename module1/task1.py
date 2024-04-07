@@ -214,16 +214,16 @@ def extract_4_cases(dict_data):
 
 #########DRIVER FUNCTION#######
 def main():
-    #downloadWebPage('https://www.worldometers.info/coronavirus/','webpage.html')
+    downloadWebPage('https://www.worldometers.info/coronavirus/','webpage.html')
     print("Extracting Data")
     extractData()
     countries = []
-    country_file = open('worldometers_countrylist.txt','r')
-    file = open('data1.txt','w')
+    country_file = open('data/worldometers_countrylist.txt','r')
+    file = open('data/data1.txt','w')
     arr=['Country Name','Url','Total cases','Active Cases', 'Total Deaths', 'Totat Recovered', 'Total Tests', 'Deaths/million'', Tests/million', 'New Cases', 'New Death', 'New Recovery']
     ind=[1,2,3,9,5,7,13,12,14,4,6,8]
     for x in country_file.readlines(): countries.append(x.replace('\n',''))
-    file = open('data1.txt','w')
+    file = open('data/data1.txt','w')
     file.write(('\t'.join(arr))+'\n')
     for i in entireData:
         i.reverse()
@@ -243,13 +243,13 @@ def main():
             file.write(string+'\n')
     file.close()
 
-    file = open('data.txt','w')
+    file = open('data/data.txt','w')
     for i in entireData:
         string = ','.join(i[0:14])
         file.write(string+'\n')
     file.close()
 
-    file = open('gloabl_countries_data.txt','w')
+    file = open('data/gloabl_countries_data.txt','w')
     string = '\t'.join(arr)
     file.write(string+'\n')
     print("Data Extracted SUcessfully")

@@ -215,7 +215,7 @@ def getData(country, url):
     downloadWebPage(url,f'data/{country}/webpage.html')
     extractData(country)
     arr=[active_cases, daily_deaths, new_cases, recovered]
-    file = open(f'../data/data/{country}/data.txt','w')
+    file = open(f'data/{country}/data.txt','w')
     file.write('Date\tActive Cases\tDaily Death\tNew cases\tRecoverd Cases\n')
     arr=[active_cases, daily_deaths, new_cases, recovered]
     for i in range(len(arr)):
@@ -234,14 +234,17 @@ def getData(country, url):
 #########DRIVER FUNCTION#######
 def main():
     global dates, total_cases,active_cases, daily_deaths, recovered
-    file = open('../data/data1.txt','r')
+    file = open('data/data1.txt','r')
     countries= file.readlines()
+    print("Extracting Countries data")
     for ip in countries:
         country_data = ip.split('\t')
         country,url=country_data[0].strip(), country_data[1]
         print(country)
         if country=='Country Name' or country.lower()=='world': continue
         getData(country.lower(),f'https://www.worldometers.info/coronavirus/{url}')
+    
+    print("Data extracted Sucessfully")
   
 if __name__ == '__main__':
     main()

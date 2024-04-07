@@ -1,12 +1,13 @@
-from module3 import task3_2
-from module3 import task3
+from module3_1 import task3_2
+from module3_1 import task3
 from module1 import task1
 import os
 import subprocess
 
 mapper_cmd="python3 mapper.py worldometers_countrylist.txt | python3 combiner.py | sort -n | python3 reducer.py"
 def main():
-
+    #task1.main()
+    #task3.main()
     while(True):
         query=int(input("Enter query no for NoSql (-1 for exit): "))
         if(query==2): 
@@ -19,7 +20,7 @@ def main():
             file = open("input.txt",'w')
             file.write(country+'\t'+start_date+'\t'+end_date)
             file.close()
-            subprocess.call('make', cwd='module3')
+            subprocess.call('make', cwd='module3_1')
         elif(query==-1): break
         else: print("Invalid query, pls try again")
 
