@@ -11,4 +11,4 @@ module3.1.2:
 
 module3.1.3:
 	@start=$$(date +%s%N); \
-    python3 mapper.py worldometers_countrylist.txt | python3 combiner.py | sort -n | python3 reducer.py
+    python3 mapper.py ../data/worldometers_countrylist.txt | python3 combiner.py | sort -n | python3 reducer.py

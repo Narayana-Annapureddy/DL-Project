@@ -19,7 +19,7 @@ def main():
             file = open("input.txt",'w')
             file.write(country+'\t'+start_date+'\t'+end_date)
             file.close()
-            subprocess.call('cd ../make')
+            subprocess.call('make', cwd='module3')
         elif(query==-1): break
         else: print("Invalid query, pls try again")
 
