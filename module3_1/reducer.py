@@ -51,5 +51,5 @@ for i in range(4):
     elif (index>0): closest(index-1, index, values, cases_types[i])
     else: closest(index+1,index, values, cases_types[i], type[i])
 
-print(closest_country)   
+print(f'Closest Country: {closest_country}')   
 #print(closest_value)

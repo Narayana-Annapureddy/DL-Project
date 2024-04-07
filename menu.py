@@ -9,9 +9,13 @@ def main():
     #task1.main()
     #task3.main()
     while(True):
-        query=int(input("Enter query no for NoSql (-1 for exit): "))
+        print("Queries")
+        print('1. TO print Active, daily death, new cases, new recovered given country')
+        print('2. To print the percentage of cases withrect to world')
+        print('3. To find change in percentage')
+        print('-1. Exit')
+        query=int(input("\nEnter query no: "))
         if(query==2): 
-            #task3_2.extract_4_cases()
             task3_2.print_all_countries_data()
         elif(query==3):
             country=input("Enter Country name: ")
@@ -21,6 +25,7 @@ def main():
             file.write(country+'\t'+start_date+'\t'+end_date)
             file.close()
             subprocess.call('make', cwd='module3_1')
+        elif(query==1): task3_2.extract_4_cases()
         elif(query==-1): break
         else: print("Invalid query, pls try again")
 
