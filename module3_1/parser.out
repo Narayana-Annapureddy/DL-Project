@@ -1,0 +1,652 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CLOSEDATA
+    CLOSEDIV
+    CLOSEHEAD
+    CLOSEHEADER
+    CLOSEROW
+    CLOSESPAN
+    CLOSESTYLE
+    CLOSETABLE
+    GARBAGE
+    OPENDATA
+    OPENDIV
+    OPENHEAD
+    OPENHEADER
+    OPENROW
+    OPENSPAN
+    OPENSTYLE
+    OPENTABLE
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> table
+Rule 2     table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+Rule 3     table -> NEWCASES newcases
+Rule 4     table -> ACTIVECASES skiptag LINEWIDTH CONTENT CONTENT CONTENT
+Rule 5     table -> DAILYDEATHS skiptag CHECKBOX CONTENT CONTENT CONTENT
+Rule 6     table -> RECOVERED skiptag LINEWIDTH CONTENT CONTENT CONTENT
+Rule 7     newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+Rule 8     skiptag -> CONTENT skiptag
+Rule 9     skiptag -> OPENHREF skiptag
+Rule 10    skiptag -> CLOSEHREF skiptag
+Rule 11    skiptag -> SPACE skiptag
+Rule 12    skiptag -> empty
+Rule 13    empty -> <empty>
+Rule 14    content -> CONTENT content
+Rule 15    content -> empty
+
+Terminals, with rules where they appear
+
+ACTIVECASES          : 4
+CATEGORIES           : 2 7
+CHECKBOX             : 5 7 7
+CLOSEDATA            : 
+CLOSEDIV             : 
+CLOSEHEAD            : 
+CLOSEHEADER          : 
+CLOSEHREF            : 10
+CLOSEROW             : 
+CLOSESPAN            : 
+CLOSESTYLE           : 
+CLOSETABLE           : 
+CONTENT              : 2 2 2 2 4 4 4 5 5 5 6 6 6 7 7 7 7 8 14
+DAILYDEATHS          : 5
+GARBAGE              : 
+LINEAR               : 2
+LINEWIDTH            : 2 4 6
+NEWCASES             : 3
+OPENDATA             : 
+OPENDIV              : 
+OPENHEAD             : 
+OPENHEADER           : 
+OPENHREF             : 9
+OPENROW              : 
+OPENSPAN             : 
+OPENSTYLE            : 
+OPENTABLE            : 
+RECOVERED            : 6
+SPACE                : 11
+TOTALCASES           : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+content              : 14
+empty                : 12 15
+newcases             : 3
+skiptag              : 2 2 2 4 5 6 7 7 7 8 9 10 11
+start                : 0
+table                : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . table
+    (2) table -> . TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (3) table -> . NEWCASES newcases
+    (4) table -> . ACTIVECASES skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (5) table -> . DAILYDEATHS skiptag CHECKBOX CONTENT CONTENT CONTENT
+    (6) table -> . RECOVERED skiptag LINEWIDTH CONTENT CONTENT CONTENT
+
+    TOTALCASES      shift and go to state 3
+    NEWCASES        shift and go to state 4
+    ACTIVECASES     shift and go to state 5
+    DAILYDEATHS     shift and go to state 6
+    RECOVERED       shift and go to state 7
+
+    start                          shift and go to state 1
+    table                          shift and go to state 2
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> table .
+
+    $end            reduce using rule 1 (start -> table .)
+
+
+state 3
+
+    (2) table -> TOTALCASES . skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEAR          reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 8
+    empty                          shift and go to state 13
+
+state 4
+
+    (3) table -> NEWCASES . newcases
+    (7) newcases -> . skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    CATEGORIES      reduce using rule 13 (empty -> .)
+
+    newcases                       shift and go to state 14
+    skiptag                        shift and go to state 15
+    empty                          shift and go to state 13
+
+state 5
+
+    (4) table -> ACTIVECASES . skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 16
+    empty                          shift and go to state 13
+
+state 6
+
+    (5) table -> DAILYDEATHS . skiptag CHECKBOX CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 17
+    empty                          shift and go to state 13
+
+state 7
+
+    (6) table -> RECOVERED . skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 18
+    empty                          shift and go to state 13
+
+state 8
+
+    (2) table -> TOTALCASES skiptag . LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+
+    LINEAR          shift and go to state 19
+
+
+state 9
+
+    (8) skiptag -> CONTENT . skiptag
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEAR          reduce using rule 13 (empty -> .)
+    CATEGORIES      reduce using rule 13 (empty -> .)
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 20
+    empty                          shift and go to state 13
+
+state 10
+
+    (9) skiptag -> OPENHREF . skiptag
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEAR          reduce using rule 13 (empty -> .)
+    CATEGORIES      reduce using rule 13 (empty -> .)
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 21
+    empty                          shift and go to state 13
+
+state 11
+
+    (10) skiptag -> CLOSEHREF . skiptag
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEAR          reduce using rule 13 (empty -> .)
+    CATEGORIES      reduce using rule 13 (empty -> .)
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 22
+    empty                          shift and go to state 13
+
+state 12
+
+    (11) skiptag -> SPACE . skiptag
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEAR          reduce using rule 13 (empty -> .)
+    CATEGORIES      reduce using rule 13 (empty -> .)
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 23
+    empty                          shift and go to state 13
+
+state 13
+
+    (12) skiptag -> empty .
+
+    LINEAR          reduce using rule 12 (skiptag -> empty .)
+    CATEGORIES      reduce using rule 12 (skiptag -> empty .)
+    LINEWIDTH       reduce using rule 12 (skiptag -> empty .)
+    CHECKBOX        reduce using rule 12 (skiptag -> empty .)
+
+
+state 14
+
+    (3) table -> NEWCASES newcases .
+
+    $end            reduce using rule 3 (table -> NEWCASES newcases .)
+
+
+state 15
+
+    (7) newcases -> skiptag . CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+
+    CATEGORIES      shift and go to state 24
+
+
+state 16
+
+    (4) table -> ACTIVECASES skiptag . LINEWIDTH CONTENT CONTENT CONTENT
+
+    LINEWIDTH       shift and go to state 25
+
+
+state 17
+
+    (5) table -> DAILYDEATHS skiptag . CHECKBOX CONTENT CONTENT CONTENT
+
+    CHECKBOX        shift and go to state 26
+
+
+state 18
+
+    (6) table -> RECOVERED skiptag . LINEWIDTH CONTENT CONTENT CONTENT
+
+    LINEWIDTH       shift and go to state 27
+
+
+state 19
+
+    (2) table -> TOTALCASES skiptag LINEAR . skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    CATEGORIES      reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 28
+    empty                          shift and go to state 13
+
+state 20
+
+    (8) skiptag -> CONTENT skiptag .
+
+    LINEAR          reduce using rule 8 (skiptag -> CONTENT skiptag .)
+    CATEGORIES      reduce using rule 8 (skiptag -> CONTENT skiptag .)
+    LINEWIDTH       reduce using rule 8 (skiptag -> CONTENT skiptag .)
+    CHECKBOX        reduce using rule 8 (skiptag -> CONTENT skiptag .)
+
+
+state 21
+
+    (9) skiptag -> OPENHREF skiptag .
+
+    LINEAR          reduce using rule 9 (skiptag -> OPENHREF skiptag .)
+    CATEGORIES      reduce using rule 9 (skiptag -> OPENHREF skiptag .)
+    LINEWIDTH       reduce using rule 9 (skiptag -> OPENHREF skiptag .)
+    CHECKBOX        reduce using rule 9 (skiptag -> OPENHREF skiptag .)
+
+
+state 22
+
+    (10) skiptag -> CLOSEHREF skiptag .
+
+    LINEAR          reduce using rule 10 (skiptag -> CLOSEHREF skiptag .)
+    CATEGORIES      reduce using rule 10 (skiptag -> CLOSEHREF skiptag .)
+    LINEWIDTH       reduce using rule 10 (skiptag -> CLOSEHREF skiptag .)
+    CHECKBOX        reduce using rule 10 (skiptag -> CLOSEHREF skiptag .)
+
+
+state 23
+
+    (11) skiptag -> SPACE skiptag .
+
+    LINEAR          reduce using rule 11 (skiptag -> SPACE skiptag .)
+    CATEGORIES      reduce using rule 11 (skiptag -> SPACE skiptag .)
+    LINEWIDTH       reduce using rule 11 (skiptag -> SPACE skiptag .)
+    CHECKBOX        reduce using rule 11 (skiptag -> SPACE skiptag .)
+
+
+state 24
+
+    (7) newcases -> skiptag CATEGORIES . CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 29
+
+
+state 25
+
+    (4) table -> ACTIVECASES skiptag LINEWIDTH . CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 30
+
+
+state 26
+
+    (5) table -> DAILYDEATHS skiptag CHECKBOX . CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 31
+
+
+state 27
+
+    (6) table -> RECOVERED skiptag LINEWIDTH . CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 32
+
+
+state 28
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag . CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+
+    CATEGORIES      shift and go to state 33
+
+
+state 29
+
+    (7) newcases -> skiptag CATEGORIES CONTENT . skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 34
+    empty                          shift and go to state 13
+
+state 30
+
+    (4) table -> ACTIVECASES skiptag LINEWIDTH CONTENT . CONTENT CONTENT
+
+    CONTENT         shift and go to state 35
+
+
+state 31
+
+    (5) table -> DAILYDEATHS skiptag CHECKBOX CONTENT . CONTENT CONTENT
+
+    CONTENT         shift and go to state 36
+
+
+state 32
+
+    (6) table -> RECOVERED skiptag LINEWIDTH CONTENT . CONTENT CONTENT
+
+    CONTENT         shift and go to state 37
+
+
+state 33
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES . CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 38
+
+
+state 34
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag . CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT
+
+    CHECKBOX        shift and go to state 39
+
+
+state 35
+
+    (4) table -> ACTIVECASES skiptag LINEWIDTH CONTENT CONTENT . CONTENT
+
+    CONTENT         shift and go to state 40
+
+
+state 36
+
+    (5) table -> DAILYDEATHS skiptag CHECKBOX CONTENT CONTENT . CONTENT
+
+    CONTENT         shift and go to state 41
+
+
+state 37
+
+    (6) table -> RECOVERED skiptag LINEWIDTH CONTENT CONTENT . CONTENT
+
+    CONTENT         shift and go to state 42
+
+
+state 38
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT . skiptag LINEWIDTH CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    LINEWIDTH       reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 43
+    empty                          shift and go to state 13
+
+state 39
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX . skiptag CHECKBOX CONTENT CONTENT CONTENT
+    (8) skiptag -> . CONTENT skiptag
+    (9) skiptag -> . OPENHREF skiptag
+    (10) skiptag -> . CLOSEHREF skiptag
+    (11) skiptag -> . SPACE skiptag
+    (12) skiptag -> . empty
+    (13) empty -> .
+
+    CONTENT         shift and go to state 9
+    OPENHREF        shift and go to state 10
+    CLOSEHREF       shift and go to state 11
+    SPACE           shift and go to state 12
+    CHECKBOX        reduce using rule 13 (empty -> .)
+
+    skiptag                        shift and go to state 44
+    empty                          shift and go to state 13
+
+state 40
+
+    (4) table -> ACTIVECASES skiptag LINEWIDTH CONTENT CONTENT CONTENT .
+
+    $end            reduce using rule 4 (table -> ACTIVECASES skiptag LINEWIDTH CONTENT CONTENT CONTENT .)
+
+
+state 41
+
+    (5) table -> DAILYDEATHS skiptag CHECKBOX CONTENT CONTENT CONTENT .
+
+    $end            reduce using rule 5 (table -> DAILYDEATHS skiptag CHECKBOX CONTENT CONTENT CONTENT .)
+
+
+state 42
+
+    (6) table -> RECOVERED skiptag LINEWIDTH CONTENT CONTENT CONTENT .
+
+    $end            reduce using rule 6 (table -> RECOVERED skiptag LINEWIDTH CONTENT CONTENT CONTENT .)
+
+
+state 43
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag . LINEWIDTH CONTENT CONTENT CONTENT
+
+    LINEWIDTH       shift and go to state 45
+
+
+state 44
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag . CHECKBOX CONTENT CONTENT CONTENT
+
+    CHECKBOX        shift and go to state 46
+
+
+state 45
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH . CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 47
+
+
+state 46
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX . CONTENT CONTENT CONTENT
+
+    CONTENT         shift and go to state 48
+
+
+state 47
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT . CONTENT CONTENT
+
+    CONTENT         shift and go to state 49
+
+
+state 48
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT . CONTENT CONTENT
+
+    CONTENT         shift and go to state 50
+
+
+state 49
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT . CONTENT
+
+    CONTENT         shift and go to state 51
+
+
+state 50
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT . CONTENT
+
+    CONTENT         shift and go to state 52
+
+
+state 51
+
+    (2) table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT .
+
+    $end            reduce using rule 2 (table -> TOTALCASES skiptag LINEAR skiptag CATEGORIES CONTENT skiptag LINEWIDTH CONTENT CONTENT CONTENT .)
+
+
+state 52
+
+    (7) newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT .
+
+    $end            reduce using rule 7 (newcases -> skiptag CATEGORIES CONTENT skiptag CHECKBOX skiptag CHECKBOX CONTENT CONTENT CONTENT .)
+

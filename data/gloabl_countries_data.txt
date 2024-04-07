@@ -1,0 +1,1 @@
+Country Name	Url	Total cases	Active Cases	Total Deaths	Totat Recovered	Total Tests	Deaths/million, Tests/million	New Cases	New Death	New Recovery

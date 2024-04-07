@@ -1,0 +1,1068 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CLOSEDIV
+    CLOSEHEAD
+    CLOSESTYLE
+    CLOSETABLE
+    OPENDIV
+    OPENSTYLE
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> table
+Rule 2     table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+Rule 3     skiprows -> skiprow skiprow skiprow skiprow skiprow skiprow skiprow
+Rule 4     skiprow -> OPENROW unwanted CLOSEROW
+Rule 5     skiptag -> CONTENT skiptag
+Rule 6     skiptag -> OPENHREF skiptag
+Rule 7     skiptag -> CLOSEHREF skiptag
+Rule 8     skiptag -> SPACE skiptag
+Rule 9     skiptag -> empty
+Rule 10    unwanted -> GARBAGE unwanted
+Rule 11    unwanted -> OPENHREF unwanted
+Rule 12    unwanted -> CLOSEHREF unwanted
+Rule 13    unwanted -> CONTENT unwanted
+Rule 14    unwanted -> OPENDATA unwanted
+Rule 15    unwanted -> CLOSEDATA unwanted
+Rule 16    unwanted -> SPACE unwanted
+Rule 17    unwanted -> OPENSPAN unwanted
+Rule 18    unwanted -> CLOSESPAN unwanted
+Rule 19    unwanted -> OPENHEADER unwanted
+Rule 20    unwanted -> CLOSEHEADER unwanted
+Rule 21    unwanted -> empty
+Rule 22    handlerow -> OPENROW dataCell CLOSEROW handlerow
+Rule 23    handlerow -> empty
+Rule 24    dataCell -> OPENDATA CONTENT CLOSEDATA dataCell
+Rule 25    dataCell -> OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell
+Rule 26    dataCell -> OPENDATA CLOSEDATA dataCell
+Rule 27    dataCell -> empty
+Rule 28    empty -> <empty>
+Rule 29    content -> CONTENT content
+Rule 30    content -> empty
+
+Terminals, with rules where they appear
+
+BEGINTABLE           : 2
+CLOSEDATA            : 15 24 25 26
+CLOSEDIV             : 
+CLOSEHEAD            : 
+CLOSEHEADER          : 2 20
+CLOSEHREF            : 7 12 25
+CLOSEROW             : 4 22
+CLOSESPAN            : 18
+CLOSESTYLE           : 
+CLOSETABLE           : 
+CONTENT              : 5 13 24 29
+GARBAGE              : 10
+OPENDATA             : 14 24 25 26
+OPENDIV              : 
+OPENHEAD             : 2
+OPENHEADER           : 19
+OPENHREF             : 6 11 25
+OPENROW              : 4 22
+OPENSPAN             : 17
+OPENSTYLE            : 
+OPENTABLE            : 2
+SPACE                : 8 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+content              : 2 25 29
+dataCell             : 22 24 25 26
+empty                : 9 21 23 27 30
+handlerow            : 2 22
+skiprow              : 2 3 3 3 3 3 3 3
+skiprows             : 2
+skiptag              : 2 5 6 7 8
+start                : 0
+table                : 1
+unwanted             : 4 10 11 12 13 14 15 16 17 18 19 20
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . table
+    (2) table -> . BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+
+    BEGINTABLE      shift and go to state 3
+
+    start                          shift and go to state 1
+    table                          shift and go to state 2
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> table .
+
+    $end            reduce using rule 1 (start -> table .)
+
+
+state 3
+
+    (2) table -> BEGINTABLE . skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+    (5) skiptag -> . CONTENT skiptag
+    (6) skiptag -> . OPENHREF skiptag
+    (7) skiptag -> . CLOSEHREF skiptag
+    (8) skiptag -> . SPACE skiptag
+    (9) skiptag -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 5
+    OPENHREF        shift and go to state 6
+    CLOSEHREF       shift and go to state 7
+    SPACE           shift and go to state 8
+    OPENHEAD        reduce using rule 28 (empty -> .)
+
+    skiptag                        shift and go to state 4
+    empty                          shift and go to state 9
+
+state 4
+
+    (2) table -> BEGINTABLE skiptag . OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+
+    OPENHEAD        shift and go to state 10
+
+
+state 5
+
+    (5) skiptag -> CONTENT . skiptag
+    (5) skiptag -> . CONTENT skiptag
+    (6) skiptag -> . OPENHREF skiptag
+    (7) skiptag -> . CLOSEHREF skiptag
+    (8) skiptag -> . SPACE skiptag
+    (9) skiptag -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 5
+    OPENHREF        shift and go to state 6
+    CLOSEHREF       shift and go to state 7
+    SPACE           shift and go to state 8
+    OPENHEAD        reduce using rule 28 (empty -> .)
+
+    skiptag                        shift and go to state 11
+    empty                          shift and go to state 9
+
+state 6
+
+    (6) skiptag -> OPENHREF . skiptag
+    (5) skiptag -> . CONTENT skiptag
+    (6) skiptag -> . OPENHREF skiptag
+    (7) skiptag -> . CLOSEHREF skiptag
+    (8) skiptag -> . SPACE skiptag
+    (9) skiptag -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 5
+    OPENHREF        shift and go to state 6
+    CLOSEHREF       shift and go to state 7
+    SPACE           shift and go to state 8
+    OPENHEAD        reduce using rule 28 (empty -> .)
+
+    skiptag                        shift and go to state 12
+    empty                          shift and go to state 9
+
+state 7
+
+    (7) skiptag -> CLOSEHREF . skiptag
+    (5) skiptag -> . CONTENT skiptag
+    (6) skiptag -> . OPENHREF skiptag
+    (7) skiptag -> . CLOSEHREF skiptag
+    (8) skiptag -> . SPACE skiptag
+    (9) skiptag -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 5
+    OPENHREF        shift and go to state 6
+    CLOSEHREF       shift and go to state 7
+    SPACE           shift and go to state 8
+    OPENHEAD        reduce using rule 28 (empty -> .)
+
+    skiptag                        shift and go to state 13
+    empty                          shift and go to state 9
+
+state 8
+
+    (8) skiptag -> SPACE . skiptag
+    (5) skiptag -> . CONTENT skiptag
+    (6) skiptag -> . OPENHREF skiptag
+    (7) skiptag -> . CLOSEHREF skiptag
+    (8) skiptag -> . SPACE skiptag
+    (9) skiptag -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 5
+    OPENHREF        shift and go to state 6
+    CLOSEHREF       shift and go to state 7
+    SPACE           shift and go to state 8
+    OPENHEAD        reduce using rule 28 (empty -> .)
+
+    skiptag                        shift and go to state 14
+    empty                          shift and go to state 9
+
+state 9
+
+    (9) skiptag -> empty .
+
+    OPENHEAD        reduce using rule 9 (skiptag -> empty .)
+
+
+state 10
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD . content skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+    (29) content -> . CONTENT content
+    (30) content -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 16
+    OPENROW         reduce using rule 28 (empty -> .)
+
+    content                        shift and go to state 15
+    empty                          shift and go to state 17
+
+state 11
+
+    (5) skiptag -> CONTENT skiptag .
+
+    OPENHEAD        reduce using rule 5 (skiptag -> CONTENT skiptag .)
+
+
+state 12
+
+    (6) skiptag -> OPENHREF skiptag .
+
+    OPENHEAD        reduce using rule 6 (skiptag -> OPENHREF skiptag .)
+
+
+state 13
+
+    (7) skiptag -> CLOSEHREF skiptag .
+
+    OPENHEAD        reduce using rule 7 (skiptag -> CLOSEHREF skiptag .)
+
+
+state 14
+
+    (8) skiptag -> SPACE skiptag .
+
+    OPENHEAD        reduce using rule 8 (skiptag -> SPACE skiptag .)
+
+
+state 15
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content . skiprow CLOSEHEADER OPENTABLE skiprows handlerow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 18
+
+state 16
+
+    (29) content -> CONTENT . content
+    (29) content -> . CONTENT content
+    (30) content -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 16
+    OPENROW         reduce using rule 28 (empty -> .)
+    CLOSEHREF       reduce using rule 28 (empty -> .)
+
+    content                        shift and go to state 20
+    empty                          shift and go to state 17
+
+state 17
+
+    (30) content -> empty .
+
+    OPENROW         reduce using rule 30 (content -> empty .)
+    CLOSEHREF       reduce using rule 30 (content -> empty .)
+
+
+state 18
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content skiprow . CLOSEHEADER OPENTABLE skiprows handlerow
+
+    CLOSEHEADER     shift and go to state 21
+
+
+state 19
+
+    (4) skiprow -> OPENROW . unwanted CLOSEROW
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 22
+    empty                          shift and go to state 34
+
+state 20
+
+    (29) content -> CONTENT content .
+
+    OPENROW         reduce using rule 29 (content -> CONTENT content .)
+    CLOSEHREF       reduce using rule 29 (content -> CONTENT content .)
+
+
+state 21
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER . OPENTABLE skiprows handlerow
+
+    OPENTABLE       shift and go to state 35
+
+
+state 22
+
+    (4) skiprow -> OPENROW unwanted . CLOSEROW
+
+    CLOSEROW        shift and go to state 36
+
+
+state 23
+
+    (10) unwanted -> GARBAGE . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 37
+    empty                          shift and go to state 34
+
+state 24
+
+    (11) unwanted -> OPENHREF . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 38
+    empty                          shift and go to state 34
+
+state 25
+
+    (12) unwanted -> CLOSEHREF . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 39
+    empty                          shift and go to state 34
+
+state 26
+
+    (13) unwanted -> CONTENT . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 40
+    empty                          shift and go to state 34
+
+state 27
+
+    (14) unwanted -> OPENDATA . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 41
+    empty                          shift and go to state 34
+
+state 28
+
+    (15) unwanted -> CLOSEDATA . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 42
+    empty                          shift and go to state 34
+
+state 29
+
+    (16) unwanted -> SPACE . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 43
+    empty                          shift and go to state 34
+
+state 30
+
+    (17) unwanted -> OPENSPAN . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 44
+    empty                          shift and go to state 34
+
+state 31
+
+    (18) unwanted -> CLOSESPAN . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 45
+    empty                          shift and go to state 34
+
+state 32
+
+    (19) unwanted -> OPENHEADER . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 46
+    empty                          shift and go to state 34
+
+state 33
+
+    (20) unwanted -> CLOSEHEADER . unwanted
+    (10) unwanted -> . GARBAGE unwanted
+    (11) unwanted -> . OPENHREF unwanted
+    (12) unwanted -> . CLOSEHREF unwanted
+    (13) unwanted -> . CONTENT unwanted
+    (14) unwanted -> . OPENDATA unwanted
+    (15) unwanted -> . CLOSEDATA unwanted
+    (16) unwanted -> . SPACE unwanted
+    (17) unwanted -> . OPENSPAN unwanted
+    (18) unwanted -> . CLOSESPAN unwanted
+    (19) unwanted -> . OPENHEADER unwanted
+    (20) unwanted -> . CLOSEHEADER unwanted
+    (21) unwanted -> . empty
+    (28) empty -> .
+
+    GARBAGE         shift and go to state 23
+    OPENHREF        shift and go to state 24
+    CLOSEHREF       shift and go to state 25
+    CONTENT         shift and go to state 26
+    OPENDATA        shift and go to state 27
+    CLOSEDATA       shift and go to state 28
+    SPACE           shift and go to state 29
+    OPENSPAN        shift and go to state 30
+    CLOSESPAN       shift and go to state 31
+    OPENHEADER      shift and go to state 32
+    CLOSEHEADER     shift and go to state 33
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    unwanted                       shift and go to state 47
+    empty                          shift and go to state 34
+
+state 34
+
+    (21) unwanted -> empty .
+
+    CLOSEROW        reduce using rule 21 (unwanted -> empty .)
+
+
+state 35
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE . skiprows handlerow
+    (3) skiprows -> . skiprow skiprow skiprow skiprow skiprow skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 48
+    skiprows                       shift and go to state 49
+
+state 36
+
+    (4) skiprow -> OPENROW unwanted CLOSEROW .
+
+    CLOSEHEADER     reduce using rule 4 (skiprow -> OPENROW unwanted CLOSEROW .)
+    OPENROW         reduce using rule 4 (skiprow -> OPENROW unwanted CLOSEROW .)
+    $end            reduce using rule 4 (skiprow -> OPENROW unwanted CLOSEROW .)
+
+
+state 37
+
+    (10) unwanted -> GARBAGE unwanted .
+
+    CLOSEROW        reduce using rule 10 (unwanted -> GARBAGE unwanted .)
+
+
+state 38
+
+    (11) unwanted -> OPENHREF unwanted .
+
+    CLOSEROW        reduce using rule 11 (unwanted -> OPENHREF unwanted .)
+
+
+state 39
+
+    (12) unwanted -> CLOSEHREF unwanted .
+
+    CLOSEROW        reduce using rule 12 (unwanted -> CLOSEHREF unwanted .)
+
+
+state 40
+
+    (13) unwanted -> CONTENT unwanted .
+
+    CLOSEROW        reduce using rule 13 (unwanted -> CONTENT unwanted .)
+
+
+state 41
+
+    (14) unwanted -> OPENDATA unwanted .
+
+    CLOSEROW        reduce using rule 14 (unwanted -> OPENDATA unwanted .)
+
+
+state 42
+
+    (15) unwanted -> CLOSEDATA unwanted .
+
+    CLOSEROW        reduce using rule 15 (unwanted -> CLOSEDATA unwanted .)
+
+
+state 43
+
+    (16) unwanted -> SPACE unwanted .
+
+    CLOSEROW        reduce using rule 16 (unwanted -> SPACE unwanted .)
+
+
+state 44
+
+    (17) unwanted -> OPENSPAN unwanted .
+
+    CLOSEROW        reduce using rule 17 (unwanted -> OPENSPAN unwanted .)
+
+
+state 45
+
+    (18) unwanted -> CLOSESPAN unwanted .
+
+    CLOSEROW        reduce using rule 18 (unwanted -> CLOSESPAN unwanted .)
+
+
+state 46
+
+    (19) unwanted -> OPENHEADER unwanted .
+
+    CLOSEROW        reduce using rule 19 (unwanted -> OPENHEADER unwanted .)
+
+
+state 47
+
+    (20) unwanted -> CLOSEHEADER unwanted .
+
+    CLOSEROW        reduce using rule 20 (unwanted -> CLOSEHEADER unwanted .)
+
+
+state 48
+
+    (3) skiprows -> skiprow . skiprow skiprow skiprow skiprow skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 50
+
+state 49
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows . handlerow
+    (22) handlerow -> . OPENROW dataCell CLOSEROW handlerow
+    (23) handlerow -> . empty
+    (28) empty -> .
+
+    OPENROW         shift and go to state 52
+    $end            reduce using rule 28 (empty -> .)
+
+    handlerow                      shift and go to state 51
+    empty                          shift and go to state 53
+
+state 50
+
+    (3) skiprows -> skiprow skiprow . skiprow skiprow skiprow skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 54
+
+state 51
+
+    (2) table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow .
+
+    $end            reduce using rule 2 (table -> BEGINTABLE skiptag OPENHEAD content skiprow CLOSEHEADER OPENTABLE skiprows handlerow .)
+
+
+state 52
+
+    (22) handlerow -> OPENROW . dataCell CLOSEROW handlerow
+    (24) dataCell -> . OPENDATA CONTENT CLOSEDATA dataCell
+    (25) dataCell -> . OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell
+    (26) dataCell -> . OPENDATA CLOSEDATA dataCell
+    (27) dataCell -> . empty
+    (28) empty -> .
+
+    OPENDATA        shift and go to state 56
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    dataCell                       shift and go to state 55
+    empty                          shift and go to state 57
+
+state 53
+
+    (23) handlerow -> empty .
+
+    $end            reduce using rule 23 (handlerow -> empty .)
+
+
+state 54
+
+    (3) skiprows -> skiprow skiprow skiprow . skiprow skiprow skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 58
+
+state 55
+
+    (22) handlerow -> OPENROW dataCell . CLOSEROW handlerow
+
+    CLOSEROW        shift and go to state 59
+
+
+state 56
+
+    (24) dataCell -> OPENDATA . CONTENT CLOSEDATA dataCell
+    (25) dataCell -> OPENDATA . OPENHREF content CLOSEHREF CLOSEDATA dataCell
+    (26) dataCell -> OPENDATA . CLOSEDATA dataCell
+
+    CONTENT         shift and go to state 60
+    OPENHREF        shift and go to state 62
+    CLOSEDATA       shift and go to state 61
+
+
+state 57
+
+    (27) dataCell -> empty .
+
+    CLOSEROW        reduce using rule 27 (dataCell -> empty .)
+
+
+state 58
+
+    (3) skiprows -> skiprow skiprow skiprow skiprow . skiprow skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 63
+
+state 59
+
+    (22) handlerow -> OPENROW dataCell CLOSEROW . handlerow
+    (22) handlerow -> . OPENROW dataCell CLOSEROW handlerow
+    (23) handlerow -> . empty
+    (28) empty -> .
+
+    OPENROW         shift and go to state 52
+    $end            reduce using rule 28 (empty -> .)
+
+    handlerow                      shift and go to state 64
+    empty                          shift and go to state 53
+
+state 60
+
+    (24) dataCell -> OPENDATA CONTENT . CLOSEDATA dataCell
+
+    CLOSEDATA       shift and go to state 65
+
+
+state 61
+
+    (26) dataCell -> OPENDATA CLOSEDATA . dataCell
+    (24) dataCell -> . OPENDATA CONTENT CLOSEDATA dataCell
+    (25) dataCell -> . OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell
+    (26) dataCell -> . OPENDATA CLOSEDATA dataCell
+    (27) dataCell -> . empty
+    (28) empty -> .
+
+    OPENDATA        shift and go to state 56
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    dataCell                       shift and go to state 66
+    empty                          shift and go to state 57
+
+state 62
+
+    (25) dataCell -> OPENDATA OPENHREF . content CLOSEHREF CLOSEDATA dataCell
+    (29) content -> . CONTENT content
+    (30) content -> . empty
+    (28) empty -> .
+
+    CONTENT         shift and go to state 16
+    CLOSEHREF       reduce using rule 28 (empty -> .)
+
+    content                        shift and go to state 67
+    empty                          shift and go to state 17
+
+state 63
+
+    (3) skiprows -> skiprow skiprow skiprow skiprow skiprow . skiprow skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 68
+
+state 64
+
+    (22) handlerow -> OPENROW dataCell CLOSEROW handlerow .
+
+    $end            reduce using rule 22 (handlerow -> OPENROW dataCell CLOSEROW handlerow .)
+
+
+state 65
+
+    (24) dataCell -> OPENDATA CONTENT CLOSEDATA . dataCell
+    (24) dataCell -> . OPENDATA CONTENT CLOSEDATA dataCell
+    (25) dataCell -> . OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell
+    (26) dataCell -> . OPENDATA CLOSEDATA dataCell
+    (27) dataCell -> . empty
+    (28) empty -> .
+
+    OPENDATA        shift and go to state 56
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    dataCell                       shift and go to state 69
+    empty                          shift and go to state 57
+
+state 66
+
+    (26) dataCell -> OPENDATA CLOSEDATA dataCell .
+
+    CLOSEROW        reduce using rule 26 (dataCell -> OPENDATA CLOSEDATA dataCell .)
+
+
+state 67
+
+    (25) dataCell -> OPENDATA OPENHREF content . CLOSEHREF CLOSEDATA dataCell
+
+    CLOSEHREF       shift and go to state 70
+
+
+state 68
+
+    (3) skiprows -> skiprow skiprow skiprow skiprow skiprow skiprow . skiprow
+    (4) skiprow -> . OPENROW unwanted CLOSEROW
+
+    OPENROW         shift and go to state 19
+
+    skiprow                        shift and go to state 71
+
+state 69
+
+    (24) dataCell -> OPENDATA CONTENT CLOSEDATA dataCell .
+
+    CLOSEROW        reduce using rule 24 (dataCell -> OPENDATA CONTENT CLOSEDATA dataCell .)
+
+
+state 70
+
+    (25) dataCell -> OPENDATA OPENHREF content CLOSEHREF . CLOSEDATA dataCell
+
+    CLOSEDATA       shift and go to state 72
+
+
+state 71
+
+    (3) skiprows -> skiprow skiprow skiprow skiprow skiprow skiprow skiprow .
+
+    OPENROW         reduce using rule 3 (skiprows -> skiprow skiprow skiprow skiprow skiprow skiprow skiprow .)
+    $end            reduce using rule 3 (skiprows -> skiprow skiprow skiprow skiprow skiprow skiprow skiprow .)
+
+
+state 72
+
+    (25) dataCell -> OPENDATA OPENHREF content CLOSEHREF CLOSEDATA . dataCell
+    (24) dataCell -> . OPENDATA CONTENT CLOSEDATA dataCell
+    (25) dataCell -> . OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell
+    (26) dataCell -> . OPENDATA CLOSEDATA dataCell
+    (27) dataCell -> . empty
+    (28) empty -> .
+
+    OPENDATA        shift and go to state 56
+    CLOSEROW        reduce using rule 28 (empty -> .)
+
+    dataCell                       shift and go to state 73
+    empty                          shift and go to state 57
+
+state 73
+
+    (25) dataCell -> OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell .
+
+    CLOSEROW        reduce using rule 25 (dataCell -> OPENDATA OPENHREF content CLOSEHREF CLOSEDATA dataCell .)
+
