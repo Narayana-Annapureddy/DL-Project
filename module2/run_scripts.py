@@ -1,10 +1,13 @@
 import os
 
 def run_commands():
-    os.system("python3 link_generator.py")
-    os.system("python3 get_data_timeline.py")
-    os.system("python3 get_data_response.py")
-    os.system("python3 country_info.py")
+
+    cwdi = os.getcwd()
+    os.system(f"python3 {cwdi}/module2/link_generator.py")
+    os.system(f"python3 {cwdi}/module2/timeline_info.py")
+    os.system(f"python3 {cwdi}/module2/response_info.py")
+    os.system(f"python3 {cwdi}/module2/country_generator.py")
+    os.system(f"python3 {cwdi}/module2/info_country.py")
 
 def main():
     run_commands()
