@@ -3,9 +3,11 @@ Remaining modules are done by my teammates Narayana, Akash.
 
 
 
-Vamsi (23CS60R66) : Module1, Module 3.1 \n
-Narayana (23CS60R40) : Module 3.2, Main menu driven program\n
-Akash (23CS60R14) : Module 2\n
+Vamsi (23CS60R66) : Module1, Module 3.1 
+
+Narayana (23CS60R40) : Module 3.2, Main menu driven program
+
+Akash (23CS60R14) : Module 2
 
 
 
