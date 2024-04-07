@@ -52,4 +52,4 @@ for i in range(4):
     else: closest(index+1,index, values, cases_types[i], type[i])
 
 print(closest_country)   
-print(closest_value)
+#print(closest_value)

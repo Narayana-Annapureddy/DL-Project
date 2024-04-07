@@ -1,4 +1,4 @@
-all: module3.1.2 module3.1.3
+all: module3.1.3
 
 extract_data:
 	python3 task3.py;

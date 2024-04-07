@@ -1,10 +1,9 @@
 import sys
 file = open(sys.argv[1],'r')
 
-start_date='07-01-2022'
-end_date='10-09-2022'
-country='germany'
-
+ip = open("input.txt",'r')
+country, start_date, end_date = ip.read().split('\t')
+#print(country, start_date, end_date)
 months={'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun',
         '07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'}
 
@@ -23,11 +22,9 @@ def get_percentages(country):
     data = open(f'data/{country}/data.txt','r').readlines()
     start_data, end_data, percentages=[],[],[]
     for day in data:
-        date, active_cases, daily_deaths, new_cases, recovered = day.replace('\n','').split('\t')
+        date = day.replace('\n','').split('\t')[0]
         if (date==formated_start_date): start_data = day.replace('\n','').split('\t')
-        if (date==formated_end_date): 
-            end_data = day.replace('\n','').split('\t')
-            break
+        if (date==formated_end_date): end_data = day.replace('\n','').split('\t')
     for i in range(1,5): percentages.append(checkRate(int(start_data[i]),int(end_data[i])))
     return percentages
 
