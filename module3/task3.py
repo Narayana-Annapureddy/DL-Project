@@ -215,7 +215,7 @@ def getData(country, url):
     downloadWebPage(url,f'data/{country}/webpage.html')
     extractData(country)
     arr=[active_cases, daily_deaths, new_cases, recovered]
-    file = open(f'data/{country}/data.txt','w')
+    file = open(f'../data/data/{country}/data.txt','w')
     file.write('Date\tActive Cases\tDaily Death\tNew cases\tRecoverd Cases\n')
     arr=[active_cases, daily_deaths, new_cases, recovered]
     for i in range(len(arr)):
@@ -234,7 +234,7 @@ def getData(country, url):
 #########DRIVER FUNCTION#######
 def main():
     global dates, total_cases,active_cases, daily_deaths, recovered
-    file = open('data1.txt','r')
+    file = open('../data/data1.txt','r')
     countries= file.readlines()
     for ip in countries:
         country_data = ip.split('\t')

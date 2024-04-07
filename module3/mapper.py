@@ -1,7 +1,7 @@
 import sys
 file = open(sys.argv[1],'r')
 
-ip = open("input.txt",'r')
+ip = open("../input.txt",'r')
 country, start_date, end_date = ip.read().split('\t')
 #print(country, start_date, end_date)
 months={'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun',
@@ -19,7 +19,7 @@ def checkRate(s,e) :
 print(f'{country.lower()},{-9999999999999}')
 
 def get_percentages(country):
-    data = open(f'data/{country}/data.txt','r').readlines()
+    data = open(f'../data/{country}/data.txt','r').readlines()
     start_data, end_data, percentages=[],[],[]
     for day in data:
         date = day.replace('\n','').split('\t')[0]

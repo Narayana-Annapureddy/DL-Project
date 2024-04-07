@@ -1,6 +1,6 @@
 def extract_4_cases():
     dict_data={}
-    file = open("data1.txt",'r')
+    file = open("data/data1.txt",'r')
     for line in file:
         data=line.replace('\n','').split('\t')
         dict_data[data[0].lower()] = data[2:]
@@ -16,7 +16,7 @@ def extract_4_cases():
         print(f'Active Cases: {active}\nDaily Deaths: {daily}\nNew Recovered: {recovered}\nNew Cases:{new}')
 
 def print_all_countries_data():
-    data = open('data1.txt','r').readlines()
+    data = open('data/data1.txt','r').readlines()
     arr=['Total cases',	'Active Cases','Total Deaths','Totat Recovered','Total Tests','Deaths/million', 'Tests/million','New Cases','New Death','New Recovery']
     total=data[1].split('\t')[2:]
     
